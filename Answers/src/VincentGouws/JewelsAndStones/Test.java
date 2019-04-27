@@ -13,7 +13,7 @@ public class Test
       
       
       Solution output = new Solution();
-      int answer = output.numJewelsInStones( jewels,stones );//fetches output
+      int answer = output.numJewelsInStones( jewels,stones );//fetches output 
       
       System.out.println("There are " + answer +" jewels in those stones.");
    }

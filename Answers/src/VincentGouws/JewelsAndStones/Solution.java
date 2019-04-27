@@ -2,7 +2,7 @@ package VincentGouws.JewelsAndStones;
 
 public class Solution
 {
-   public static int numJewelsInStones(String J, String S) {
+   public int numJewelsInStones(String J, String S) {
       int lengthJ = J.length(),lengthS = S.length(), out=0;
       char jewels;
       for (int count = 0;count != lengthJ;count++)

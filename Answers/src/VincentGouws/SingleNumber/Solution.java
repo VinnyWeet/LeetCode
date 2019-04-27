@@ -1,5 +1,4 @@
 package VincentGouws.SingleNumber;
-import java.util.*;
 
 public class Solution
 {

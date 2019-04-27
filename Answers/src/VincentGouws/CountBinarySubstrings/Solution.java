@@ -4,7 +4,7 @@ public class Solution
 {
    public int countBinarySubstrings(String s) 
    {
-      String sub = new String();
+     // String sub = new String();
       int iNum1 = 0;
       int iSub = 0;
       int pos1 = 0;
@@ -30,7 +30,7 @@ public class Solution
                if((B==pos1)||(s.charAt(B-1)=='0'))
                {
                pos1++;
-               continue FFff;   //FF
+             //  continue FFff;   //FF
                }
                pos2 = B-1;
                if(pos1 > pos2)

@@ -2,86 +2,65 @@ package VincentGouws.CountBinarySubstrings;
 
 public class Solution 
 {
-   public int countBinarySubstrings(String s) 
-   {
-     // String sub = new String();
-      int iNum1 = 0;
-      int iSub = 0;
-      int pos1 = 0;
-      int pos2 = 0;
-      //FFff:     
-	 while(true)
-      {
-         
-         iNum1 = 0;
-         //FF:
-         for(int B = pos1; B < s.length(); B++)
-         {
-            if(pos1+1 >= s.length())
-            {
-               return iSub;
-            }
-            //if(B > s.length())
-            //{
-            //   break;
-            //}
-            if(s.charAt(B) == '0')
-            {
-               if((B==pos1)||(s.charAt(B-1)=='0'))
-               {
-               pos1++;
-             //  continue FFff;   //FF
-               }
-               pos2 = B-1;
-               if(pos1 > pos2)
-               {
-                  pos2 = pos1;
-               }
-               break;
-            }
-            iNum1++;
-         }
-         
-		 
-		 if(pos2+1 == s.length())
-         {
-            return iSub;
-         }
-         
-         for(int C = pos1; C >= iNum1;)
-         {
-            C--;
-            if(C < 0||s.charAt(C) == '1')
-            {
-               break;
-            }
-            iSub++;
-         }
-         
-         if(pos2+1 == s.length())
-         {
-            return iSub;
-         }
-         
-         for(int C = pos2; C <= iNum1; )
-         {
-            C++;
-            if(C == s.length()||s.charAt(C) == '1')
-            {
-               break;
-            }
-            iSub++;
-         }
-         pos1 = pos1+iNum1;
-         if(iNum1 == 0)
-         {
-            pos1++;
-         }
-         if(pos1+1 == s.length())
-         {
-            return iSub;
-         }
-      }
+   int startOnes,endOnes,numOnes,iSubStrings;
+   char[] binarySub;
+   
+   public int countBinarySubstrings(String input) 
+   {   
+      startOnes = 0;
+      endOnes = 0;
+      numOnes = 0;
+      iSubStrings = 0;
+      binarySub = input.toCharArray();
       
+      for(int sPos = 0; sPos < binarySub.length ; sPos++)
+      {
+         for(startOnes = sPos; startOnes < binarySub.length; startOnes++)     //finds the first '1' and sets it to startOnes
+         {
+            if(binarySub[startOnes] == '1')
+            {
+               break;
+            }
+         }
+         if(startOnes >= binarySub.length && binarySub[startOnes-1] == '0')                                    //just to break if last char is '0'
+         {
+            return iSubStrings;
+         }
+         
+         for(endOnes = startOnes; endOnes < binarySub.length; endOnes++)      //finds the end of the '1's and sets is to endOnes
+         {
+            if(binarySub[endOnes] == '0')
+            {
+               break;
+            }
+         }
+         numOnes = endOnes - startOnes;                                 //calculates the amount of consecutive '1's
+         for(int countBack = startOnes-1; countBack >= 0 ; countBack--)
+         {
+            if(numOnes < (startOnes - countBack))                                           //safeguard to not exceed number of 0's to 1's ratio
+            {
+               break;
+            }
+            if(binarySub[countBack] == '1')
+            {
+               break;
+            }
+            iSubStrings++;
+         }
+         for(int countForward = endOnes; countForward < binarySub.length; countForward++)
+         {
+            if(countForward >= (endOnes + numOnes))                                           //safeguard to not exceed number of 0's to 1's ratio
+            {
+               break;
+            }
+            if(binarySub[countForward] == '1')
+            {
+               break;
+            }
+            iSubStrings++;
+         }
+         sPos = endOnes;
+      }
+      return iSubStrings;
    }
 }

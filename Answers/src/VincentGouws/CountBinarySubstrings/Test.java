@@ -8,7 +8,10 @@ public class Test
                                          "101",
                                          "010",
                                          "00110011",
-                                         "10101"};
+                                         "10101",
+                                         "0000000000000000000",
+                                         "00100",
+                                         "01"};
                                          
       Solution calculate = new Solution();
       
@@ -17,6 +20,9 @@ public class Test
       int C = calculate.countBinarySubstrings(substrings[2]);
       int D = calculate.countBinarySubstrings(substrings[3]);
       int E = calculate.countBinarySubstrings(substrings[4]);
+      int F = calculate.countBinarySubstrings(substrings[5]);
+      int G = calculate.countBinarySubstrings(substrings[6]);
+      int H = calculate.countBinarySubstrings(substrings[7]);
       
       int results = 0;
       if(A == 1)
@@ -44,6 +50,20 @@ public class Test
          results++;
       }
       
-      System.out.println(results + "/5 passed!");
+      if(F == 0)
+      {
+         results++;
+      }
+      
+      if(G == 2)
+      {
+         results++;
+      }
+      if(H == 1)
+      {
+         results++;
+      }
+      
+      System.out.println(results + "/8 passed!");
    }
 }
